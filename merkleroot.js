@@ -4,7 +4,7 @@ const Web3 = require("web3");
 const SHA256 = "sha256";
 const KECCAK256 = "keccak256";
 
-class BlockchainMerkleTree {
+class EtheremMerkleRoot {
   constructor(algorithm = SHA256) {
     this.algorithm = algorithm;
     this.tree = [];
@@ -64,9 +64,9 @@ class BlockchainMerkleTree {
 }
 
 // Usage
-const shaMerkleTree = new BlockchainMerkleTree(SHA256);
+const shaMerkleTree = new EtheremMerkleRoot(SHA256);
 
-const keccakMerkleTree = new BlockchainMerkleTree(KECCAK256);
+const keccakMerkleTree = new EtheremMerkleRoot(KECCAK256);
 
 function buildMerkleRoots(n, algorithm) {
   const merkleTree = algorithm === KECCAK256 ? keccakMerkleTree : shaMerkleTree;
@@ -84,3 +84,7 @@ function buildMerkleRoots(n, algorithm) {
   );
   console.log("Merkle root: ", merkleRoot);
 }
+
+// How to run:
+buildMerkleRoots(7, SHA256); // For SHA 256
+buildMerkleRoots(7, KECCAK256); // For KECCAK 256
